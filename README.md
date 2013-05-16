@@ -1,8 +1,7 @@
 Analyzing auth.log with Hadoop
 ==============================
 
-Process `auth.log` files (presumably pulled from multiple nodes with Flume) 
-using Hadoop to output relevant statistics.
+Check emails for potential spammers.
 
 ##Build
 
@@ -19,9 +18,9 @@ Run the jar file with Hadoop. Program arguments:
 
 Example:
 
-	hadoop fs -rmr authlog_out
-	hadoop jar target/HadoopAuthLog-1.0.jar edu.cooper.ece460.authlog.HadoopAuthLog authlog_in authlog_out
-	hadoop fs -getmerge authlog_out output/authlog_out
+	hadoop fs -rmr spamcheck_out
+	hadoop jar target/HadoopSpamCheck-1.0.jar edu.cooper.ece460.authlog.HadoopSpamCheck spamcheck_in spamcheck_out
+	hadoop fs -getmerge spamcheck_out output/spamcheck_out
 
 ###Shell script
 
@@ -31,7 +30,7 @@ the script before starting the Hadoop job.
 
 	./run.sh [hdfs-input-dir] [hdfs-output-dir] [local-output-dir]
 
-Default values are `authlog_in`, `authlog_out`, and `output`, respectively.
+Default values are `spamcheck_in`, `spamcheck_out`, and `output`, respectively.
 
 ###HTTP
 
@@ -42,5 +41,5 @@ Default values are `authlog_in`, `authlog_out`, and `output`, respectively.
 
 Output format:
 
-	username,host	logins,ssh-logins,failed-logins
+	address		reason why it is considered a spam address
 
