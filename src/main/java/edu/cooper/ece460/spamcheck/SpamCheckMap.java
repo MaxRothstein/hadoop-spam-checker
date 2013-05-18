@@ -16,8 +16,6 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 /** This mapper sends out addresses and every subject they have sent */
 public class SpamCheckMap extends Mapper<LongWritable, Text, Text, Text> {
     Context context;
-	
-	int uno = 1;
 
     @Override
     public void map(LongWritable key, Text value, Context context)
